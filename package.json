@@ -1,0 +1,28 @@
+{
+  "name": "orderly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/main.js",
+    "start": "node ./src/main.js",
+    "dbMigrate": "npx knex migrate:latest --knexfile ./data/knexfile.js",
+    "dbSeeds": "npx knex seed:run --knexfile ./data/knexfile.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^3.2.3",
+    "debug": "^4.1.1",
+    "knex": "^0.20.0",
+    "move-file": "^1.2.0",
+    "sqlite3": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}

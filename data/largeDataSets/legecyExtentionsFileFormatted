@@ -1,0 +1,42 @@
+Ebook:
+{ ext: ".pdf", name:" ", id: 1},
+{ ext: ".PDF", name:" ", id: 1},
+
+Text:
+
+Audio:
+
+
+Mobile Related:
+
+Compressed:
+
+
+Font:
+
+
+Executable:
+
+
+Web related:
+
+
+Java:
+{ ext: ".java", name:" ", id: 1},
+{ ext: ".class", name:" ", id: 1},
+
+CAD:
+
+
+PSD:
+
+
+C Genration Code:
+{ ext: ".cpp", name:" ", id: 1},
+{ ext: ".cs", name:" ", id: 1},
+
+Visual Basic:
+{ ext: ".vb", name:" ", id: 1},
+{ ext: ".vba", name:" ", id: 1},
+
+Torrent:
