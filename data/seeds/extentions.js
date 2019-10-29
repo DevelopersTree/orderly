@@ -1804,7 +1804,7 @@ const data = [
     id: 359,
   },
   {
-    ext: '.dwg',
+    ext: '.dmg',
     name: ' ',
     id: 360,
   },
