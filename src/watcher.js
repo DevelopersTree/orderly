@@ -19,7 +19,9 @@ function lunch(directory) {
   query.fetchExtentions().then((extentions) => {
     debug.log('started watching ...');
     // const extentions = rawExtentions.map((x) => x.ext);
-    watcher.on('add', (path, event) => core.organize(extentions, directory, path, event));
+    watcher.on('add', (path, event) => core.fileHandler(extentions, directory, path, event));
+    debug.log('started initial scan...');
+    core.oneTimeScan(extentions, directory);
   });
 }
 
