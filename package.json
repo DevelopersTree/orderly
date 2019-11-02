@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/main.js",
     "start": "node ./src/main.js",
+    "electron": "npx electron ./src/main.js",
     "dbMigrate": "npx knex migrate:latest --knexfile ./data/knexfile.js",
     "dbSeeds": "npx knex seed:run --knexfile ./data/knexfile.js"
   },
@@ -14,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "electron": "^7.0.1",
     "chokidar": "^3.2.3",
     "debug": "^4.1.1",
     "knex": "^0.20.0",
