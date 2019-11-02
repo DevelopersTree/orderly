@@ -1,1 +1,56 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/lib/uikit-3.2.2/css/uikit.min.css" />    
+    <link rel="stylesheet" href="./assets/css/program.css" />    
+    <script>
+        if (typeof module === 'object') {window.module = module; module = undefined;}
+    </script>
+    <script src="./assets/lib/jquery-3.4.1.min.js"></script>
+    <script src="./assets//lib/uikit-3.2.2/js/uikit.min.js"></script>
+    <script src="./assets/lib/uikit-3.2.2/js/uikit-icons.min.js"></script>
+    <script src="assets/js/program.js"></script>
+    <script>if (window.module) module = window.module;</script>
+    <script>
+        const { ipcRenderer } = require('electron')
+        console.log(ipcRenderer)
+    </script>
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <nav class="uk-navbar-container" uk-navbar>
+        <div class="uk-navbar-left">
+            <a  class="nav-item" class="uk-navbar-item uk-logo" href="#">
+                <img data-src="./assets/img/logo-black.png" width="45" alt="" uk-img>
+            </a>
+            <ul class="uk-navbar-nav">
+                <li>
+                    <a class="nav-item" href="#">
+                        <div>
+                            <span uk-icon="lifesaver"></span> Organize
+                        </div>
+                    </a>
+                </li>
+                
+                <li>
+                    <a class="nav-item" href="#">
+                        <div>
+                            <span uk-icon="future"></span> Monitor
+                        </div>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </nav>
+    <!-- App Component pages will be loaded in bellow div -->
+    <div id="app"></div>
+</body>
+
+</html>

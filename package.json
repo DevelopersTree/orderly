@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/main.js",
-    "start": "node ./src/main.js",
-    "electron": "npx electron ./src/main.js",
+    "start": "npx electron ./src/main.js",
     "dbMigrate": "npx knex migrate:latest --knexfile ./data/knexfile.js",
     "dbSeeds": "npx knex seed:run --knexfile ./data/knexfile.js"
   },

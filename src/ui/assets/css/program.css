@@ -1,0 +1,33 @@
+:root {
+    --orange: #F26627;
+    --light-orange:#F9A26C;
+    --selected-orange:#f78c5b;
+    --white: #eeeeee;
+    --light-green: #9BD7D1;
+    --dark-blue: #325D79;
+
+    --main-color: var(--light-orange);
+    --main-text-color: var(--white);
+    --main-selected-color: var(--selected-orange);
+    --main-container-color: var(--white);
+}
+* {
+    color: var(--main-text-color) !important;
+}
+* :focus {
+    background: var(--main-selected-color) !important;
+}
+.uk-navbar-container {
+    background: var(--main-color) !important;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: var(--main-container-color);
+}
+.nav-item {
+    margin-top: -15px !important;
+    margin-bottom: -15px !important;
+}
