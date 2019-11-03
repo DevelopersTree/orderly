@@ -1,0 +1,15 @@
+.picker-container{
+    height: 88%;
+    margin: 10px;
+    cursor: pointer;
+}
+.picker-container .uk-width-1-1 {
+    border: 2px dashed  var(--main-color);
+    padding-top: 15%;
+}
+h4 {
+    color:var(--main-color);
+}
+.picker-container .uk-icon{
+    color:var(--main-color);
+}

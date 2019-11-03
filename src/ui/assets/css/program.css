@@ -1,18 +1,29 @@
+@import url('./UbuntuCondensed-Regular.ttf');
 :root {
     --orange: #F26627;
     --light-orange:#F9A26C;
     --selected-orange:#f78c5b;
-    --white: #eeeeee;
+    --white: #ffffff;
     --light-green: #9BD7D1;
     --dark-blue: #325D79;
+    
 
-    --main-color: var(--light-orange);
+
+    --main-color: #F1828D;
     --main-text-color: var(--white);
-    --main-selected-color: var(--selected-orange);
+    --main-selected-color: #765D69;
     --main-container-color: var(--white);
 }
-* {
+body{
+    overflow-y: hidden;
+    font-family: 'Ubuntu Condensed', sans-serif !important;
+}
+a {
     color: var(--main-text-color) !important;
+    font-family: 'Ubuntu Condensed', sans-serif !important;
+}
+h1,h2,h3,h4 {
+    font-family: 'Ubuntu Condensed', sans-serif !important;
 }
 * :focus {
     background: var(--main-selected-color) !important;

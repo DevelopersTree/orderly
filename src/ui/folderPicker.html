@@ -1,0 +1,30 @@
+<script>
+    if (typeof module === 'object') {window.module = module; module = undefined;}
+</script>
+<script src="assets/js/folderPicker.js"></script>
+<script>if (window.module) module = window.module;</script>
+
+<link rel="stylesheet" href="./assets/css/folderPicker.css" />
+<div class="picker-container uk-text-center" uk-grid>
+    <div class="uk-width-1-1 bordered-container">
+        <span uk-icon="icon:folder; ratio: 10" 
+        ></span>
+        <h4>Pick a folder to organize</h4>
+    </div>
+</div>
+<script>
+    // window.ipc = window.ipc || {},
+    // ipc.messaging = {
+    //     sendOpenSecondWindowEvent: function() {
+    //         ipcRenderer.send('open-second-window', 'an-argument')
+    // },
+
+    // init: function() {
+    //     $('#open-secondwindow-button').click( function () {
+    //          ipc.messaging.sendOpenSecondWindowEvent()
+    //     })
+    // }
+
+
+    ipcRenderer.send('folderPicked', 'yayyy');
+</script>
