@@ -5,6 +5,7 @@
 }
 .picker-container .uk-width-1-1 {
     border: 2px dashed  var(--main-color);
+    padding: 15px;
     padding-top: 15%;
 }
 h4 {

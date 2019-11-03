@@ -1,8 +1,5 @@
-// const watcher = require('./watcher');
-// const dirToWatch = '/Users/hozan/Desktop/watched';
-// watcher.lunch(dirToWatch);
 const { app, BrowserWindow, ipcMain } = require('electron');
-
+const events = require('./event');
 let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -16,6 +13,7 @@ function createWindow() {
     },
   });
   mainWindow.loadFile('./ui/index.html');
+  events.init(mainWindow);
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
@@ -36,7 +34,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-ipcMain.on('folderPicked', ()=>{
-  console.log("yayyyyyyyyyyyy folder request recived");
-})

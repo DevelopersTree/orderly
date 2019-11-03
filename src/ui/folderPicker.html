@@ -13,18 +13,24 @@
     </div>
 </div>
 <script>
-    // window.ipc = window.ipc || {},
-    // ipc.messaging = {
-    //     sendOpenSecondWindowEvent: function() {
-    //         ipcRenderer.send('open-second-window', 'an-argument')
-    // },
-
-    // init: function() {
-    //     $('#open-secondwindow-button').click( function () {
-    //          ipc.messaging.sendOpenSecondWindowEvent()
-    //     })
-    // }
-
-
-    ipcRenderer.send('folderPicked', 'yayyy');
+    window.ipcEvents = window.ipcEvents || {},
+    ipcEvents = {
+        openFolderPicker:() =>{
+            ipcRenderer.send('open-folder-picker', null);
+        },
+        folderPicked: (c) =>{
+            ipcRenderer.on('folder-picked', (event, folderPaths)=>{
+                try{
+                    c(folderPaths);
+                }catch(e){}
+            })
+        },
+        fileWillBeMoved: (c) =>{
+            ipcRenderer.on('file-will-move', (event, data)=>{
+                try{
+                    c(data);
+                }catch(e){}
+            })
+        }
+    }
 </script>

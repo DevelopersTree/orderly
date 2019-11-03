@@ -1,0 +1,11 @@
+.picker-container{
+    cursor: inherit !important;
+    
+}
+.picker-container .uk-width-1-1 {
+    padding-top: 10%;
+}
+progress::-webkit-progress-value { background: var(--main-color) !important; }
+textarea{
+    resize: none;
+}
