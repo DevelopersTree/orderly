@@ -3,7 +3,7 @@ const path = require('path');
 const debug = require('debug');
 const fs = require('fs');
 const _ = require('lodash');
-
+const {each} = require('async');
 async function fileHandler(extentions, watchedDir, filePath, event = null, c = null) {
   const fullFilename = path.basename(filePath);
   const extentionName = path.extname(fullFilename);
@@ -28,30 +28,19 @@ async function fileHandler(extentions, watchedDir, filePath, event = null, c = n
 
 async function oneTimeScan(extentions, watchedDir, c = null) {
   fs.readdir(watchedDir, (err, files) => {
-    if (err) {
-      return debug.log(' Error In Reading Directory');
-    }
-    if(files.length === 0){
-      c([], 0, "No files found inside the folder")
-    }else {
-      let fileFound = false;
-      for(file of files){
-        const filePath = `${watchedDir}/${file}`;
-        if(fs.lstatSync(filePath).isFile()){
-          fileFound = true;
-          break;
-        }
+      if (err) {
+        return debug.log(' Error In Reading Directory');
       }
-      if(!fileFound) {
+      if(files.length === 0){
         c([], 0, "No files found inside the folder")
       }else {
-        files.forEach((file, index) => {
+        each(files, (file, callback)=>{
           const filePath = `${watchedDir}/${file}`;
           if(fs.lstatSync(filePath).isFile())
-            fileHandler(extentions, watchedDir, filePath, null, (statePath)=> c(files, index, statePath));
-        });
+            fileHandler(extentions, watchedDir, filePath, null, (statePath)=> c(files, 0, statePath));
+          callback();
+        })
       }
-    }
     return null;
   });
 }

@@ -12,23 +12,21 @@ $(document).ready(() => {
     UIkit.util.ready(function () {
         let filesMoved = 1;        
         window.ipcEvents.fileWillBeMoved((data)=>{
-            var bar = document.getElementById('js-progressbar');
-            const filesLength = data.files.length;
-            console.log('yayy called')
-            if(filesLength === 0){
-                $('.status-icon').html(`<span uk-icon="icon: check; ratio: 4;"></span>`);
-                $(`<a href="#" class="another-folder">Organize Another Folder</a>`).insertAfter('progress')
-            } else {
-                const percentage = (filesMoved/filesLength)* 100;
-                bar.value  = percentage;
-                console.log(filesMoved, filesLength)
-                if(filesMoved === filesLength-1 ){
-                    $('.status-icon').html(`<span uk-icon="icon: check; ratio: 4;"></span>`);
-                    $(`<a href="#" class="another-folder">Organize Another Folder</a>`).insertAfter('progress')
-                }
-            }
-            $(".progress-status").prepend(`${data.statePath}\n`);
-            filesMoved++;
+            console.log(`${data.statePath}`)
+            // var bar = document.getElementById('js-progressbar');
+            // let filesLength = data.files.length;
+            // if(filesLength === 0){
+            //     $('.status-icon').html(`<span uk-icon="icon: check; ratio: 4;"></span>`);
+            //     $(`<a href="#" class="another-folder">Organize Another Folder</a>`).insertAfter('progress')
+            // } else {
+            //     bar.value  = percentage;
+            //     if(filesMoved === filesLength-1 ){
+            //         $('.status-icon').html(`<span uk-icon="icon: check; ratio: 4;"></span>`);
+            //         $(`<a href="#" class="another-folder">Organize Another Folder</a>`).insertAfter('progress')
+            //     }
+            // }
+            // $(".progress-status").prepend(`${data.statePath}\n`);
+            // filesMoved++;
         });
         
     });
