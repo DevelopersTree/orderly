@@ -3,9 +3,13 @@
     
 }
 .picker-container .uk-width-1-1 {
-    padding-top: 10%;
+    padding-top: 3%;
 }
 progress::-webkit-progress-value { background: var(--main-color) !important; }
 textarea{
     resize: none;
+}
+.another-folder{
+    color: #a0a0a0 !important;
+    font-size: 15px;
 }

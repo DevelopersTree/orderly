@@ -9,9 +9,11 @@
     
 
 
-    --main-color: #F1828D;
+    /* --main-color: #F1828D; */
+    --main-color: #696969;
     --main-text-color: var(--white);
-    --main-selected-color: #765D69;
+    /* --main-selected-color: rgb(243, 212, 227); */
+    --main-selected-color: #757575;
     --main-container-color: var(--white);
 }
 body{

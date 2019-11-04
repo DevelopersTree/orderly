@@ -31,10 +31,27 @@ async function oneTimeScan(extentions, watchedDir, c = null) {
     if (err) {
       return debug.log(' Error In Reading Directory');
     }
-    files.forEach((file, index) => {
-      const filePath = `${watchedDir}/${file}`;
-      fileHandler(extentions, watchedDir, filePath, null, (statePath)=> c(files, index, statePath));
-    });
+    if(files.length === 0){
+      c([], 0, "No files found inside the folder")
+    }else {
+      let fileFound = false;
+      for(file of files){
+        const filePath = `${watchedDir}/${file}`;
+        if(fs.lstatSync(filePath).isFile()){
+          fileFound = true;
+          break;
+        }
+      }
+      if(!fileFound) {
+        c([], 0, "No files found inside the folder")
+      }else {
+        files.forEach((file, index) => {
+          const filePath = `${watchedDir}/${file}`;
+          if(fs.lstatSync(filePath).isFile())
+            fileHandler(extentions, watchedDir, filePath, null, (statePath)=> c(files, index, statePath));
+        });
+      }
+    }
     return null;
   });
 }
