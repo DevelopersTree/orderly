@@ -16,6 +16,7 @@
     },
     "rules": {
         "linebreak-style": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "prefer-arrow-callback": "off"
     }
 }

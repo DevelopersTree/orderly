@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const events = require('./event');
+
 let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -13,6 +14,7 @@ function createWindow() {
     },
   });
   mainWindow.loadFile('./ui/index.html');
+  mainWindow.webContents.openDevTools();
   events.init(mainWindow);
   mainWindow.on('closed', () => {
     mainWindow = null;
