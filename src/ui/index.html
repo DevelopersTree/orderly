@@ -19,6 +19,9 @@
     <script>if (window.module) module = window.module;</script>
     <script>
         const { ipcRenderer } = require('electron');
+        const detectedOs  = process.platform;
+
+        console.log(detectedOs)
         window.ipcEvents = window.ipcEvents || {},
         ipcEvents = {
             openFolderPicker:() =>{

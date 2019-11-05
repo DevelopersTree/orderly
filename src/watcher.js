@@ -1,10 +1,12 @@
 /* eslint-disable no-useless-escape */
 const chokidar = require('chokidar');
 const debug = require('debug');
+const path = require('path');
 const core = require('./core');
 const query = require('./query');
 
 function launch(directory) {
+  // chokidar.watch();
   const watcher = chokidar.watch(directory, {
     ignored: /(^|[\/\\])\../, // ignore dotfiles
     persistent: true,
@@ -18,8 +20,7 @@ function launch(directory) {
 
   query.fetchExtentions().then((extentions) => {
     debug.log('started watching ...');
-    // const extentions = rawExtentions.map((x) => x.ext);
-    watcher.on('add', (path, event) => core.fileHandler(extentions, directory, path, event));
+    watcher.on('add', (p, event) => core.fileHandler(extentions, path.dirname(p), p, event));
     debug.log('started initial scan...');
     core.oneTimeScan(extentions, directory);
   });

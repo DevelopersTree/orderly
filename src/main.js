@@ -1,7 +1,14 @@
 const { app, BrowserWindow } = require('electron');
-const path = require('path');
-const url = require('url');
 const events = require('./event');
+/*
+The variable to use would be process.platform
+
+On Mac the variable returns darwin. On Windows, it returns win32 (even on 64 bit).
+
+Possible values are: 'darwin', 'freebsd', 'linux', 'sunos' or 'win32'
+url: https://stackoverflow.com/questions/8683895/how-do-i-determine-the-current-operating-system-with-node-js
+*/
+// const detectedOs  = process.platform;
 
 let mainWindow;
 function createWindow() {
@@ -16,10 +23,6 @@ function createWindow() {
     },
   });
   mainWindow.loadFile('./ui/index.html');
-  //   mainWindow.loadURL(url.format({
-  //     pathname: path.join(__dirname, './ui/index.html'),
-  //     protocol: 'file:'
-  //   }));
   mainWindow.webContents.openDevTools();
   events.init(mainWindow);
   mainWindow.on('closed', () => {
