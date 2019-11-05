@@ -8,16 +8,16 @@ function folderPickerEvents(window) {
       if (!response.canceled) {
         event.sender.send('folder-picked', response.filePaths);
         query.fetchExtentions().then((extentions) => {
-          oneTimeScan(extentions, response.filePaths[0], (files, index, statePath) => {
-            //  lunch file-will-move event in ipcRendre
-            event.sender.send('file-will-move', { files, index, statePath });
-            // window.webContents.send('file-will-move', {files, index, statePath});
-            // ipcMain.send('file-will-move', { files, index, statePath });
+          oneTimeScan(extentions, response.filePaths[0], (files) => {
+            //  lunch folder-organized event in ipcRendre
+            event.sender.send('folder-organized', files);
           });
+        }).catch((e) => {
+          console.log(e);
         });
       }
-    }).catch(() => {
-      // console.log('error',e)
+    }).catch((e) => {
+      console.log('error',e)
     });
   });
 }

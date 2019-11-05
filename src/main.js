@@ -1,4 +1,6 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
+const url = require('url');
 const events = require('./event');
 
 let mainWindow;
@@ -14,6 +16,10 @@ function createWindow() {
     },
   });
   mainWindow.loadFile('./ui/index.html');
+  //   mainWindow.loadURL(url.format({
+  //     pathname: path.join(__dirname, './ui/index.html'),
+  //     protocol: 'file:'
+  //   }));
   mainWindow.webContents.openDevTools();
   events.init(mainWindow);
   mainWindow.on('closed', () => {

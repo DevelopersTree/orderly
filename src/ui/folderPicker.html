@@ -1,8 +1,3 @@
-<script>
-    if (typeof module === 'object') {window.module = module; module = undefined;}
-</script>
-<script src="assets/js/folderPicker.js"></script>
-<script>if (window.module) module = window.module;</script>
 
 <link rel="stylesheet" href="./assets/css/folderPicker.css" />
 <div class="picker-container uk-text-center" uk-grid>
@@ -12,25 +7,4 @@
         <h4>Pick a folder to organize</h4>
     </div>
 </div>
-<script>
-    window.ipcEvents = window.ipcEvents || {},
-    ipcEvents = {
-        openFolderPicker:() =>{
-            ipcRenderer.send('open-folder-picker', null);
-        },
-        folderPicked: (c) =>{
-            ipcRenderer.on('folder-picked', (event, folderPaths)=>{
-                try{
-                    c(folderPaths);
-                }catch(e){}
-            })
-        },
-        fileWillBeMoved: (c) =>{
-            ipcRenderer.on('file-will-move', (event, data)=>{
-                try{
-                    c(data);
-                }catch(e){}
-            })
-        }
-    }
-</script>
+

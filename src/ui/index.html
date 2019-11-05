@@ -15,9 +15,30 @@
     <script src="./assets//lib/uikit-3.2.2/js/uikit.min.js"></script>
     <script src="./assets/lib/uikit-3.2.2/js/uikit-icons.min.js"></script>
     <script src="assets/js/program.js"></script>
+    <script src="assets/js/folderPicker.js"></script>
     <script>if (window.module) module = window.module;</script>
     <script>
-        const { ipcRenderer } = require('electron')
+        const { ipcRenderer } = require('electron');
+        window.ipcEvents = window.ipcEvents || {},
+        ipcEvents = {
+            openFolderPicker:() =>{
+                ipcRenderer.send('open-folder-picker', null);
+            },
+            folderPicked: (c) =>{
+                ipcRenderer.on('folder-picked', (event, folderPaths)=>{
+                    try{
+                        c(folderPaths);
+                    }catch(e){}
+                })
+            },
+            folderOrganized: (c) =>{
+                ipcRenderer.on('folder-organized', (event, data)=>{
+                    try{
+                        c(data);
+                    }catch(e){}
+                })
+            }
+        }
     </script>
 </head>
 
