@@ -4,7 +4,7 @@ const debug = require('debug');
 const core = require('./core');
 const query = require('./query');
 
-function lunch(directory) {
+function launch(directory) {
   const watcher = chokidar.watch(directory, {
     ignored: /(^|[\/\\])\../, // ignore dotfiles
     persistent: true,
@@ -26,5 +26,5 @@ function lunch(directory) {
 }
 
 module.exports = {
-  lunch,
+  launch,
 };

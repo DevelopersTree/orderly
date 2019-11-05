@@ -2,7 +2,7 @@ const { ipcMain, dialog } = require('electron');
 const { oneTimeScan } = require('./core');
 const query = require('./query');
 
-function folderPickerEvents(window) {
+function folderPickerEvents() {
   ipcMain.on('open-folder-picker', (event) => {
     dialog.showOpenDialog({ properties: ['openDirectory'] }).then((response) => {
       if (!response.canceled) {
@@ -12,12 +12,10 @@ function folderPickerEvents(window) {
             //  lunch folder-organized event in ipcRendre
             event.sender.send('folder-organized', files);
           });
-        }).catch((e) => {
-          console.log(e);
-        });
+        }).catch(() => { /**/ });
       }
-    }).catch((e) => {
-      console.log('error',e)
+    }).catch(() => {
+
     });
   });
 }
