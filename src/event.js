@@ -7,12 +7,13 @@ function folderPickerEvents() {
     dialog.showOpenDialog({ properties: ['openDirectory'] }).then((response) => {
       if (!response.canceled) {
         event.sender.send('folder-picked', response.filePaths);
-        query.fetchExtentions().then((extentions) => {
-          oneTimeScan(extentions, response.filePaths[0], (files) => {
-            //  lunch folder-organized event in ipcRendre
-            event.sender.send('folder-organized', files);
-          });
-        }).catch(() => { /**/ });
+        // add operation parameter of what to do
+        // query.fetchExtentions().then((extentions) => {
+        //   oneTimeScan(extentions, response.filePaths[0], (files) => {
+        //     //  lunch folder-organized event in ipcRendre
+        //     event.sender.send('folder-organized', files);
+        //   });
+        // }).catch(() => { /**/ });
       }
     }).catch(() => {
 

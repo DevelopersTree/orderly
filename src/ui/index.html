@@ -15,12 +15,12 @@
     <script src="./assets//lib/uikit-3.2.2/js/uikit.min.js"></script>
     <script src="./assets/lib/uikit-3.2.2/js/uikit-icons.min.js"></script>
     <script src="assets/js/program.js"></script>
-    <script src="assets/js/folderPicker.js"></script>
     <script>if (window.module) module = window.module;</script>
     <script>
-        const { ipcRenderer } = require('electron');
+        const { ipcRenderer} = require('electron');
+        const remote = require('electron').remote;
+        const shell = remote.shell;
         const detectedOs  = process.platform;
-
         console.log(detectedOs)
         window.ipcEvents = window.ipcEvents || {},
         ipcEvents = {
@@ -47,31 +47,35 @@
 
 <body>
     <!-- Navbar Section -->
-    <nav class="uk-navbar-container" uk-navbar>
-        <div class="uk-navbar-left">
-            <!-- <a  class="nav-item" class="uk-navbar-item uk-logo" href="#">
-                <img data-src="./assets/img/logo-black.png" width="45" alt="" uk-img>
-            </a> -->
-            <ul class="uk-navbar-nav">
-                <li>
-                    <a class="nav-item link" href="#" data-page="folderPicker.html">
-                        <div>
-                            <span uk-icon="icon: lifesaver; ratio: 0.7"></span> &nbsp;&nbsp; Organize
-                        </div>
-                    </a>
-                </li>
-                
-                <li>
-                    <a class="nav-item link" href="#" data-page="about.html">
-                        <div>
-                            <span uk-icon="icon: future; ratio: 0.7"></span> &nbsp;&nbsp;Monitor
-                        </div>
-                    </a>
-                </li>
-                
-            </ul>
+    <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky" >
+        <div class="frame-bar">
         </div>
-    </nav>
+        <nav class="uk-navbar-container" uk-navbar>
+            <div class="uk-navbar-left">
+                <!-- <a  class="nav-item" class="uk-navbar-item uk-logo" href="#">
+                    <img data-src="./assets/img/logo-black.png" width="45" alt="" uk-img>
+                </a> -->
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a class="nav-item link" href="#" data-page="folderPicker.html">
+                            <div>
+                                <span uk-icon="icon: lifesaver; ratio: 0.7"></span> &nbsp;&nbsp; Organize
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a class="nav-item link" href="#" data-page="monitored.html">
+                            <div>
+                                <span uk-icon="icon: future; ratio: 0.7"></span> &nbsp;&nbsp;Monitor
+                            </div>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
     <!-- App Component pages will be loaded in bellow div -->
     <div id="app"></div>
 </body>

@@ -1,0 +1,12 @@
+/* tbody{
+    height: 300px;
+    overflow-y: scroll !important;
+} */
+.show-in-folder-link{
+    cursor: pointer !important;
+}
+
+.delete-icon :hover {
+    cursor: pointer !important;
+    color: #e74c3c;
+}

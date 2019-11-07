@@ -1,0 +1,47 @@
+<script>
+        if (typeof module === 'object') {window.module = module; module = undefined;}
+    </script>
+        <script src="assets/js/monitored.js"></script>
+<script>if (window.module) module = window.module;</script>
+    
+<link rel="stylesheet" href="./assets/css/monitored.css" />
+<div id="modal-center" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <p>Are You Sure To Delete</p>
+        <p uk-margin>
+            <button class="uk-button uk-button-danger confirm-folder-delete">Yes, Delete <span uk-icon="check"></span></button>
+        </p>
+    </div>
+</div>
+<div class="uk-panel ">
+    <table class="uk-table uk-table-divider uk-table-middle uk-table-small uk-panel-scrollable">
+        <thead>
+            <tr>
+                <th class="uk-width-small">#</th>
+                <th class="uk-table-expand">Full Path</th>
+                <th class="uk-width-small">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><span class="show-in-folder-link">/home/aram/Desktop/</a></td>
+                <td><span class="uk-margin-small-right delete-icon" data-id="123" href="#modal-center" uk-toggle uk-icon="trash"></span></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><span class="show-in-folder-link">/home/aram/Desktop2/</a></td>
+                <td><span class="uk-margin-small-right delete-icon" data-id="124" href="#modal-center" uk-toggle uk-icon="trash"></span></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <button class="uk-button uk-button-small uk-button-default new-monitored-folder"> <span uk-icon="icon:plus; ratio: 0.9"></span> Monitor New Folder</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
