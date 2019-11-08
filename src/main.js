@@ -13,10 +13,10 @@ url: https://stackoverflow.com/questions/8683895/how-do-i-determine-the-current-
 let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 700,
+    height: 500,
     center: true,
-    frame: true,
+    frame: false,
     resizable: false,
     webPreferences: {
       nodeIntegration: true,

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 $(document).ready(function () {
   $(document).on('click', '.picker-container .folder-picker-action-toggler', function () {
-    window.ipcEvents.openFolderPicker();
+    window.ipcEvents.openFolderPicker('organizeOnce');
   });
   $(document).on('click', '.another-folder', function () {
     $('#app').load('folderPicker.html');
