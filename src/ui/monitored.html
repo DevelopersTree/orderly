@@ -29,6 +29,13 @@
             <tr>
                 <td colspan="3">
                     <button class="uk-button uk-button-small uk-button-default new-monitored-folder"> <span uk-icon="icon:plus; ratio: 0.9"></span> Monitor New Folder</button>
+                    <button class="uk-button uk-button-small uk-button-default monitored-setting-btn" type="button"><span uk-icon="icon:bolt; ratio: 0.9"></span> Monitor Folders</button>
+                    <div uk-dropdown>
+                        <select class="uk-select mnitored-service-dropdown">
+                            <option value="1">Yes Monitor</option>
+                            <option value="0">Stop All Services</option>
+                        </select>
+                    </div>
                 </td>
             </tr>
         </tfoot>

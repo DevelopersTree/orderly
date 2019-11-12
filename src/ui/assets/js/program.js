@@ -4,6 +4,7 @@ $(document).ready(() => {
   $('.link').click(function () {
     ipcRenderer.removeAllListeners();
     $(document).off('click');
+    $(document).off('change');
     $('#app').load($(this).data('page'));
   });
 });

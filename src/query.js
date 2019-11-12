@@ -17,6 +17,19 @@ function fetchMonitoredFolders() {
       'monitored_folder.full_path',
     ).limit(25);
 }
+function fetchOption(optionName) {
+  return storage('option')
+    .select()
+    .where('name', optionName)
+    .limit(1);
+}
+function setOption(optionName, optionValue) {
+  return storage('option')
+    .update({
+      value: optionValue,
+    })
+    .where('name', optionName);
+}
 function deleteMonitoredFolder(id) {
   return storage('monitored_folder').del().where('id', id);
 }
@@ -40,4 +53,6 @@ module.exports = {
   fetchMonitoredFolders,
   deleteMonitoredFolder,
   newMonitoredFolder,
+  fetchOption,
+  setOption,
 };

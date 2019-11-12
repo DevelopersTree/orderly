@@ -19,12 +19,15 @@
     <script>
         const { ipcRenderer} = require('electron');
         const remote = require('electron').remote;
-        const {fetchMonitoredFolders, deleteMonitoredFolder, newMonitoredFolder} = require('../query.js')
+        const {fetchMonitoredFolders, deleteMonitoredFolder, newMonitoredFolder, fetchOption, setOption} = require('../query.js')
         const shell = remote.shell;
         const detectedOs  = process.platform;
         console.log(detectedOs)
         window.ipcEvents = window.ipcEvents || {},
         ipcEvents = {
+            serviceStatusChange:(operationToBePerformed) =>{
+                ipcRenderer.send('service-status-change', operationToBePerformed);
+            },
             openFolderPicker:(operationToBePerformed) =>{
                 ipcRenderer.send('open-folder-picker', operationToBePerformed);
             },

@@ -4,6 +4,8 @@ $(document).ready(function () {
   function loadMonitoredFolders() {
     fetchMonitoredFolders().then((monitoredFolders) => {
       // console.log(d);
+      if (monitoredFolders.length === 0) $('.monitored-setting-btn').css('display', 'none');
+      if (monitoredFolders.length > 0) $('.monitored-setting-btn').css('display', 'initial');
       let count = 1;
       let html = '';
       monitoredFolders.forEach((folder) => {
@@ -20,6 +22,24 @@ $(document).ready(function () {
     });
   }
   loadMonitoredFolders();
+
+  function selectedMonitoreStatus() {
+    fetchOption('monitor_folders').then(([record]) => {
+      $('.mnitored-service-dropdown').val(record.value);
+    });
+  }
+  selectedMonitoreStatus();
+  $(document).on('change', '.mnitored-service-dropdown', function () {
+    const value = $(this).val();
+    setOption('monitor_folders', value).then(() => {
+      ipcEvents.serviceStatusChange((value === '0') ? 'stop' : 'start');
+      UIkit.notification({
+        message: `${(value === '0') ? 'Services Stoped' : 'Now Monitoring'}`,
+        timeout: 700,
+        pos: 'bottom-center',
+      });
+    });
+  });
   $(document).on('click', '.show-in-folder-link', function () {
     shell.showItemInFolder($(this).data('link'));
   });

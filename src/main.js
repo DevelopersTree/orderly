@@ -20,9 +20,11 @@ function createWindow() {
     resizable: false,
     webPreferences: {
       nodeIntegration: true,
+      webSecurity: false,
     },
   });
-  mainWindow.loadFile('./ui/index.html');
+  // mainWindow.loadFile('./ui/index.html');
+  mainWindow.loadURL(`file://${__dirname}/ui/index.html`);
   mainWindow.webContents.openDevTools();
   events.init(mainWindow);
   mainWindow.on('closed', () => {
