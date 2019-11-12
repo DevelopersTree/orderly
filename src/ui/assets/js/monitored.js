@@ -1,6 +1,9 @@
 
 /* eslint-disable no-undef */
 $(document).ready(function () {
+  function reloadService() {
+    ipcEvents.serviceStatusChange('reload');
+  }
   function loadMonitoredFolders() {
     fetchMonitoredFolders().then((monitoredFolders) => {
       // console.log(d);
@@ -22,7 +25,6 @@ $(document).ready(function () {
     });
   }
   loadMonitoredFolders();
-
   function selectedMonitoreStatus() {
     fetchOption('monitor_folders').then(([record]) => {
       $('.mnitored-service-dropdown').val(record.value);
@@ -33,11 +35,6 @@ $(document).ready(function () {
     const value = $(this).val();
     setOption('monitor_folders', value).then(() => {
       ipcEvents.serviceStatusChange((value === '0') ? 'stop' : 'start');
-      UIkit.notification({
-        message: `${(value === '0') ? 'Services Stoped' : 'Now Monitoring'}`,
-        timeout: 700,
-        pos: 'bottom-center',
-      });
     });
   });
   $(document).on('click', '.show-in-folder-link', function () {
@@ -49,6 +46,7 @@ $(document).ready(function () {
   $(document).on('click', '.confirm-folder-delete', function () {
     deleteMonitoredFolder(window.PathToRemove).then(() => {
       loadMonitoredFolders();
+      reloadService();
       $('.uk-modal-close-default').click();
     });
   });
@@ -58,6 +56,21 @@ $(document).ready(function () {
   window.ipcEvents.folderPicked(function (paths) {
     newMonitoredFolder(paths[0]).then(() => {
       loadMonitoredFolders();
+      reloadService();
+    });
+  });
+  window.ipcEvents.serviceStarted(function () {
+    UIkit.notification({
+      message: 'Now Monitoring',
+      timeout: 700,
+      pos: 'bottom-center',
+    });
+  });
+  window.ipcEvents.serviceStoped(function () {
+    UIkit.notification({
+      message: 'Service Stoped',
+      timeout: 700,
+      pos: 'bottom-center',
     });
   });
 });

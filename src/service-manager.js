@@ -34,6 +34,20 @@ function stopServiceLinux(onSuccess = null, onError = null) {
     return null;
   });
 }
+function reloadServiceLinux(onSuccess = null, onError = null) {
+  const shellCommand = `
+    systemctl restart ${serviceName}
+    `;
+  exec(shellCommand, (err, stdout, stderr) => {
+    if (err) {
+      if (onError) onError(err, stdout, stderr);
+      if (stderr.trim() === '' && onSuccess) onSuccess(stdout, stderr);
+      return null;
+    }
+    if (stderr.trim() === '' && onSuccess) onSuccess(stdout, stderr);
+    return null;
+  });
+}
 
 async function startService(onSuccess = null, onError = null) {
   debug.log(`starting  ${serviceName} service ....`);
@@ -45,9 +59,14 @@ function stopService(onSuccess = null, onError = null) {
   debug.log(`stoping ${serviceName} service...`);
   stopServiceLinux(onSuccess, onError);
 }
+function reloadService(onSuccess = null, onError = null) {
+  debug.log(`restarting ${serviceName} service...`);
+  reloadServiceLinux(onSuccess, onError);
+}
 
 
 module.exports = {
   startService,
   stopService,
+  reloadService,
 };

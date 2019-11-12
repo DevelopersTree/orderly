@@ -28,6 +28,20 @@
             serviceStatusChange:(operationToBePerformed) =>{
                 ipcRenderer.send('service-status-change', operationToBePerformed);
             },
+            serviceStarted:(data) =>{
+                ipcRenderer.on('service-started', (event, data)=>{
+                    try{
+                        c(data);
+                    }catch(e){}
+                })
+            },
+            serviceStoped:(data) =>{
+                ipcRenderer.on('service-stoped', (event, data)=>{
+                    try{
+                        c(data);
+                    }catch(e){}
+                })
+            },
             openFolderPicker:(operationToBePerformed) =>{
                 ipcRenderer.send('open-folder-picker', operationToBePerformed);
             },

@@ -27,16 +27,21 @@ function folderPickerEvents() {
 }
 
 
-function serviceActionHanler(action) {
+function serviceActionHanler(event, action) {
   switch (action) {
     case 'start':
       serviceManager.startService(() => {
-        debug.log('service started');
+        event.sender.send('service-started', true);
       });
       break;
     case 'stop':
       serviceManager.stopService(() => {
-        debug.log('service stoped');
+        event.sender.send('service-stoped', true);
+      });
+      break;
+    case 'reload':
+      serviceManager.reloadService(() => {
+        event.sender.send('service-reloaded', true);
       });
       break;
     default:
@@ -46,7 +51,7 @@ function serviceActionHanler(action) {
 
 function serviceStatusChange() {
   ipcMain.on('service-status-change', (event, operationToBePerformed) => {
-    serviceActionHanler(operationToBePerformed);
+    serviceActionHanler(event, operationToBePerformed);
   });
 }
 
@@ -54,6 +59,6 @@ function serviceStatusChange() {
 module.exports = {
   init: (mainWindow) => {
     folderPickerEvents(mainWindow);
-    serviceStatusChange(mainWindow);
+    serviceStatusChange();
   },
 };
