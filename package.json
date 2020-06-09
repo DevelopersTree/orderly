@@ -28,7 +28,7 @@
     "move-file": "^1.2.0",
     "npm": "^6.13.0",
     "service-systemd": "^3.5.1",
-    "sqlite3": "^4.1.0"
+    "sqlite3": "^4.2.0"
   },
   "devDependencies": {
     "electron-builder": "^22.1.0",
